@@ -1,0 +1,76 @@
+# Assignment no 8 :- Write a program to Calculate and interpret the Pearson and Spearman correlation coefficients.
+
+
+import numpy as np
+import scipy.stats as stats
+
+#Function to calculate and interpret pearson correlation
+def pearson_correlation(x,y):
+    #calculate pearson correlation coefficient
+    pearson_corr, p_value = stats.pearsonr(x,y)
+    #measure the strength and direction of the relational between two variable
+    print(f"pearson correlation coefficient: {pearson_corr:.4f}")
+
+    #Interpretation based on the value of pearson's correlation
+    if pearson_corr > 0.8:
+        print("interpretation: strong postive liner relationship")
+    if pearson_corr > 0.5:
+        print("interpretation: moderate postive liner relationship")
+    if pearson_corr > 0:
+        print("interpretation: weak postive liner relationship")
+    if pearson_corr > -0.8:
+        print("interpretation: strong postive liner relationship")
+    if pearson_corr > -0.5:
+        print("interpretation: moderate postive liner relationship")
+    if pearson_corr > 0:
+        print("interpretation: weak postive liner relationship")
+    else:
+        print("interpretation: no liner relationship")
+
+    print(f"p-value:{p_value:.4f}")
+    if p_value < 0.05:
+        print("Conclusion: the correlation is statistically significant.")
+    else:
+        print("Conclusion: the correlation is not statistically significant.")
+
+#Function to calculate and interpret spearman correlation
+def spearman_correlation(x,y):
+    #calculate spearman correlation coefficient
+    spearman_corr, p_value = stats.spearmanr(x,y)
+    #measure the strength and direction of the relational between two rank
+    print(f"Spearman correlation coefficient: {spearman_corr:.4f}")
+
+    #Interpretation based on the value of spearman's correlation
+    if spearman_corr > 0.8:
+        print("interpretation: strong postive Monotoic relationship")
+    if spearman_corr > 0.5:
+        print("interpretation: moderate postive Monotoic relationship")
+    if spearman_corr > 0:
+        print("interpretation: weak postive Monotoic relationship")
+    if spearman_corr > -0.8:
+        print("interpretation: strong postive Monotoic relationship")
+    if spearman_corr > -0.5:
+        print("interpretation: moderate postive Monotoic relationship")
+    if spearman_corr > 0:
+        print("interpretation: weak postive Monotoic relationship")
+    else:
+        print("interpretation: no Monotoic relationship")
+
+    print(f"p-value:{p_value:.4f}")
+    if p_value < 0.05:
+        print("Conclusion: the correlation is statistically significant.")
+    else:
+        print("Conclusion: the correlation is not statistically significant.")
+
+# Example data (you can change these lists)
+x = [10,20,30,40,50]
+y = [12,22,31,43,48]
+
+#calcluate and interpret pearson correlation
+print("Pearson correlation:")
+pearson_correlation(x,y)
+print("  ")
+
+#calcluate and interpret spearman correlation
+print("Spearman correlation:")
+spearman_correlation(x,y)
