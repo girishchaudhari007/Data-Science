@@ -1,0 +1,41 @@
+#Create a Jupiter Notebook and perform basic Python operations & Calculate statistics (mean, median, variance) using NumPy functions.
+
+import numpy as np
+
+#Arithmatic Operations
+a=25
+b=10
+
+print("Addition :",a+b)
+print("Substraction:",a-b)
+print("Multiflication",a*b)
+print("Division:",a/b)
+
+#Statistics Mean, Median, Smaple varience, Population Varience
+Data_set1=np.array([1,2,3,4,4])
+Mean=np.mean(Data_set1)
+Median=np.median(Data_set1)
+Population_varience=np.var(Data_set1)
+Sample_varience=np.var(Data_set1,ddof=1)
+
+
+print(Data_set1)
+print(Mean)
+print(Median)
+print(Population_varience)
+print(Sample_varience)
+
+#DATA SET 2
+
+Data_set2=np.array([3,6,8,9,12,12])
+Mean_2=np.mean(Data_set2)
+Median_2=np.median(Data_set2)
+Population_varience_2=np.var(Data_set2)
+Sample_varience_2=np.var(Data_set2,ddof=1)
+
+
+print(Data_set2)
+print(Mean_2)
+print(Median_2)
+print(Population_varience_2)
+print(Sample_varience_2)
