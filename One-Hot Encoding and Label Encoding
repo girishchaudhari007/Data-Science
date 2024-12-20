@@ -1,0 +1,41 @@
+#Write a program to implement Encode categorical variables using One-Hot Encoding and Label Encoding with Pandas and Scikit-learn.
+#Find One-Hot Encoding and Label Encoding from given data
+
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder,LabelEncoder
+
+data={
+    'Category':['A','B','A','C','B','C'],
+    'value':[10,20,10,30,20,30]
+    
+}
+
+df=pd.DataFrame(data)
+print("Origianlly Data:")
+print(df)
+
+#One-Hot Encoding
+one_hot_encoder_df=pd.get_dummies(df,columns=['Category'])
+print(one_hot_encoder_df)
+
+#Label Encoding
+label_encoder=LabelEncoder()
+df['Category_Label']=label_encoder.fit_transform(df['Category'])
+print(df)
+
+
+#Find One-Hot Encoding and Label Encoding from read_csv file
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder,LabelEncoder
+
+data=pd.read_csv('Encodin.csv')
+print(data)
+
+#One-Hot Encoding
+one_hot_encode_df=pd.get_dummies(data,columns=['Fruits'])
+print(one_hot_encode_df)
+
+#Label Encoding
+label_encoder=LabelEncoder()
+data['Category_Label']=label_encoder.fit_transform(data['Fruits'])
+print(data)
