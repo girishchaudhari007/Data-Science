@@ -1,0 +1,52 @@
+#Write a program to implement simple logistic regression on given dataset.
+
+
+import pandas as pd
+import numpy as np
+import  matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+import seaborn as sns
+
+#sample data(Years of experience and binary outcome : 1 means purchased, 0 means not purchased)
+data = {
+'X':[1,2,3,4,5,6,7,8,9,10], #Independent variale(g.g year of experience)
+'y':[0,0,0,0,1,1,1,1,1,1] #Dependent variale( 0 = not purchased, 1= Purchased)
+ 
+}
+
+#Convert the data into a pandas DataFrame
+df=pd.DataFrame(data)
+
+#prepare the data for logistic regression
+X = df[['X']]
+y = df[['y']]
+
+#Split data into training and testing sets
+X_train,X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state = 42)
+
+#create and train the logistic regression model
+model = LogisticRegression() model.fit(X_train, y_train)
+
+#predict the results
+y_pred = model.predict(X_test)
+
+#calculate the accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+#Confusion matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+#print the result
+print("\n---------------------Logistic Regression	")
+print(f"Accuracy  :{accuracy}")
+print(f"Confusion Matrix : \n{conf_matrix}")
+
+#plotting the decision boundary for logistic regression
+plt.figure(figsize=(8,6))
+plt.scatter(X_train,y_train, color='blue', label='Train data') plt.scatter(X_test,y_test, color='red', label='Test data')
+plt.plot(X_test,model.predict_proba(X_test)[:,1],color='green', label='DecisionBoundary', linestyle='dotted') plt.xlabel('Years of experience')
+plt.ylabel('Purchase (0 and 1)')
+plt.title('Logistic Regression: Purchase vs Experience') plt.legend()
+plt.show()
