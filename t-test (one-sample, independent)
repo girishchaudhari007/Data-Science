@@ -1,0 +1,39 @@
+#Write a program to Perform a t-test (one-sample, independent) on sample data and interpret the results.
+
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+#sample data for one-sample t-test
+sample_data_one=[1,15,14,10,8,15,14,12,10,9]
+population_mean=12
+
+#performing one-sample t-test
+t_stat_one, p_value_one=stats.ttest_1samp(sample_data_one, population_mean)
+
+#Interprtation for one-sample t-test  
+print("one-sample t-Test:")
+print(f"T-statistic:{t_stat_one}, p-value:{p_value_one}")
+
+if p_value_one<0.05:
+    print("Reject the null hypothesis: the sample mean is significantly different from the population mean.")
+else:
+    print("Fail to reject the null hypotesis: the sample mean is not significant different from the population mean.")
+
+
+# Sample data for independant two-sample t-test
+sample_data_a=[12,15,14,10,8]
+sample_data_b=[14,15,13,17,19]
+
+#performing independent two-sample t-test
+t_state_two, p_value_two = stats.ttest_ind(sample_data_a,sample_data_b)
+
+#interpretation for indepedant two sample t-test
+print("\n Independent two-sample T-test:")
+print(f"T-statistic:{t_stat_two},p-value:{p_value_two}")
+
+if p_value_two < 0.05:
+    print("Reject the null hypothesis: the means of the two samples are significant different.")
+else:
+    print("Fail to reject the null hypothesis: the mean of the two samplle are not significantly different.")
